@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid"
@@ -42,7 +42,7 @@ function Notes() {
   }
 
   const addToggleSideBar = () => {
-    if(toggleSideBar == true) {
+    if(toggleSideBar === true) {
       setToggleSideBar(false);
     }
     else {

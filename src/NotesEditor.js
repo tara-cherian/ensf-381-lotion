@@ -45,25 +45,25 @@ function NotesEditor() {
             id: uuidv4()
         }
         const notesData = localStorage.getItem('notesData') ? JSON.parse(localStorage.getItem('notesData')) : [];
-        if (notesId != undefined) {
+        if (notesId !== undefined) {
             notesData[notesId] = note;
         }
         else {
             notesData.push(note);
         }
         localStorage.setItem('notesData', JSON.stringify(notesData));
-        notesUpdated();
+        notesUpdated(someParameter);
     }
 
     const deleteData = () => {
         console.log("delete", description);
         const notesData = localStorage.getItem('notesData') ? JSON.parse(localStorage.getItem('notesData')) : [];
         if (notesData.length > 0) {
-            if (notesId != undefined){
+            if (notesId !== undefined){
                 notesData.splice(notesId, 1);
                 localStorage.setItem('notesData', JSON.stringify(notesData));
                 setDescription("");
-                notesUpdated();
+                notesUpdated(someParameter);
                 navigate(`../notes/${notesData - 1}/edit`, { replace: true });
             }
         }
@@ -73,7 +73,7 @@ function NotesEditor() {
     const showNotes = () => {
         const notesData = localStorage.getItem('notesData') ? JSON.parse(localStorage.getItem('notesData')) : [];
         if (notesData.length > 0) {
-            if (notesId != undefined) {
+            if (notesId !== undefined) {
                 if (notesId < notesData.length) {
                     const { title, description, fDate } = notesData[notesId];
                     setTitle(title);
@@ -87,7 +87,7 @@ function NotesEditor() {
 
     useEffect(() => {
         showNotes();
-    }, [notesId])
+    })
 
     return <>
      <div className="header">

@@ -9,7 +9,7 @@ function NotesContainer() {
     const showNotes = () => {
         const notesData = localStorage.getItem('notesData') ? JSON.parse(localStorage.getItem('notesData')) : [];
         if (notesData.length > 0) {
-            if (notesId != undefined)
+            if (notesId !== undefined)
                 setNotesContent(notesData[notesId]);
             else
                 setNotesContent(notesData[0]);
@@ -24,7 +24,7 @@ function NotesContainer() {
           
     useEffect(() => {
         showNotes();
-    }, [notesId])
+    })
 
     const editNotes = ()=>{
         navigate(`../notes/${notesId}/edit`, { replace: true });
@@ -33,11 +33,11 @@ function NotesContainer() {
     const deleteNotes = ()=>{
         const notesData = localStorage.getItem('notesData') ? JSON.parse(localStorage.getItem('notesData')) : [];
         if (notesData.length > 0) {
-            if (notesId != undefined){
+            if (notesId !== undefined){
                 notesData.splice(notesId, 1);
                 localStorage.setItem('notesData', JSON.stringify(notesData));
                 setNotesContent(notesData[0])
-                notesUpdated();
+                notesUpdated(someParameter);
             }
         }
     }
