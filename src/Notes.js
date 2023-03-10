@@ -36,9 +36,10 @@ function Notes() {
     }
     notesList.push(note);
     localStorage.setItem('notesData', JSON.stringify(notesData));
-    notesUpdated();
-    let notesLength = notesList.length;
-    navigate(`notes/${notesLength - 1}/edit`);
+    setNotesList(notesList);
+    let selectedNote = notesList.length-1;
+    setSelectedNote(selectedNote)
+    navigate(`notes/${selectedNote}/edit`);
   }
 
   const addToggleSideBar = () => {
