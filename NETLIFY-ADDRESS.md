@@ -1,1 +1,1 @@
-https://admirable-longma-44baa1.netlify.app/
+https://tara-lotion.netlify.app/notes
