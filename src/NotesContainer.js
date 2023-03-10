@@ -1,43 +1,44 @@
 import { useParams, useNavigate, useOutletContext } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function NotesContainer() {
     const [someParameter, notesUpdated] = useOutletContext();
     const { notesId } = useParams();
-    const [notesContent, setNotesContent] = useState({});
+
     const navigate = useNavigate();
-    const showNotes = () => {
-        const notesData = localStorage.getItem('notesData') ? JSON.parse(localStorage.getItem('notesData')) : [];
-        if (notesData.length > 0) {
-            if (notesId !== undefined)
-                setNotesContent(notesData[notesId]);
-            else
-                setNotesContent(notesData[0]);
-        }
+    const notesData = localStorage.getItem('notesData') ? JSON.parse(localStorage.getItem('notesData')) : [];
+    let notesTemp = {};
+    if (notesData.length > 0) {
+        if (notesId !== undefined)
+            notesTemp = notesData[notesId];
+        else
+            notesTemp = notesData[0];
     }
 
-    const extractContent = (s)=> {
+    const [notesContent, setNotesContent] = useState(notesTemp);
+
+    const extractContent = (s) => {
         var span = document.createElement('span');
         span.innerHTML = s;
         return span.textContent || span.innerText;
-      };
-          
-    useEffect(() => {
-        showNotes();
-    })
+    };
 
-    const editNotes = ()=>{
+    const editNotes = () => {
         navigate(`../notes/${notesId}/edit`, { replace: true });
     }
 
-    const deleteNotes = ()=>{
+    const deleteNotes = () => {
         const notesData = localStorage.getItem('notesData') ? JSON.parse(localStorage.getItem('notesData')) : [];
         if (notesData.length > 0) {
-            if (notesId !== undefined){
+            if (notesId !== undefined) {
                 notesData.splice(notesId, 1);
                 localStorage.setItem('notesData', JSON.stringify(notesData));
                 setNotesContent(notesData[0])
                 notesUpdated(someParameter);
+                if (notesData.length > 0)
+                    navigate(`../notes/${notesData.length - 1}/edit`, { replace: true });
+                else
+                    navigate(`../notes`, { replace: true });
             }
         }
     }

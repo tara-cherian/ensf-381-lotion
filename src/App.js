@@ -8,6 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Notes />}>
+        <Route path="/notes" element={<NotesContainer />}></Route>
           <Route path="/notes/:notesId" element={<NotesContainer />}></Route>
           <Route path="/notes/:notesId/edit" element={<NotesEditor />}></Route>
         </Route>
