@@ -6,10 +6,12 @@ h4,
 h5,
 h6,
 li,
+
 p {
   margin: 0;
   padding: 0;
 }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -17,20 +19,108 @@ a {
 
 #title {
   font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
   padding: 20px;
+  text-align: center;
   border-bottom: 1px solid lightgray;
+}
+
+.menu {
+position: absolute;
+top: 0;
+left: 0;
+margin: 20px;
+background-color: #fff;
+font-size: 20px;
+height: 2.5em;
+width: 2.5em;
+border: none;
+cursor: pointer;
+font-weight: bold;
+}
+
+.editDeleteButtons {
+  background-color: #fff;
+  font-size: 17px;
+  height: 5em;
+  width: 5em;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.editDeleteButtons:hover {
+  background-color: #423c52;
+  color: #fff;
+}
+
+.titleBox {
+  border: none;
+  font-size: 20px;
+  padding: 5px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.dateBox {
+  border: none;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.textBox {
+  border: none;
+  font-size: 10px;
+  height: 300px;
+}
+
+#sub-title {
+  margin-top: 16px;
 }
 
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.buttons {
+    background-color: #fff;
+    font-size: 16px;
+    height: 2.5em;
+    width: 2.5em;
+    position: relative;
+    border: none;
+    cursor: pointer;
+}
+
+.buttons:after,
+.buttons:before {
+  content: "";
+  display: block;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.buttons:before {
+  height: 1em;
+  width: 0.2em;
+}
+
+.buttons:after {
+  height: 0.2em;
+  width: 1em;
 }
 
 #left-section {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  border-right: 1px solid lightgray;
 }
 
 #left-header {
@@ -41,5 +131,68 @@ a {
 
 #right-section {
   display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+.notesDiv{
+  cursor: pointer;
+  padding: 20px;
+}
+
+.notesDiv:hover {
+  background-color: #423c52;
+  color: #fff;
+}
+
+.selectedNotesDiv{
+  background-color: #423c52;
+  color: #fff;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.leftHeader {
+  font-family: Arial, Helvetica, sans-serif;
+  flex-grow: 1;
+}
+
+.sideButtons{
+  flex-grow: 1;
+  text-align: right;
+}
+
+.content{
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.date{
+  color: grey;
+  font-size: 12px;
+}
+
+.description{
+  font-size: 15px;
+  margin-top: 5px;
+  overflow: hidden;
+  max-width: 450px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.noContent{
+  display: flex;
   justify-content: center;
+  align-self:center;
+  color: grey;
+  font-size: 25px;
+  margin: 50px;
 }
